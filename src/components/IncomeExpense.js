@@ -1,18 +1,13 @@
-import React, {useContext} from 'react'
-import { GlobalContext } from '../context/GlobalState'
+import React from 'react';
+import { useSelector } from 'react-redux';
+
+
 
    
 
 
  export default function IncomeExpense(){
-   const {transactions} =  {
-    transactions:[
-        {id:1, text: 'flower', amount: -2 },
-        {id:2, text: 'salary', amount:300},
-        {id:3, text:'Book', amount:-10},
-        {id:4, text:'Camera', amount:150}
-    ]}
-
+     const transactions = useSelector((state) => state.expense.transactions)
     const amounts = transactions.map(transaction => transaction.amount);
 
     const income = amounts

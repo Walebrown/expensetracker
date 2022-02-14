@@ -1,14 +1,18 @@
-import React, {useState,useContext} from 'react';
-import { GlobalContext } from '../context/GlobalState'
+import React, {useState} from 'react';
+
+import { useDispatch } from 'react-redux';
+import { addTransaction } from '../redux/ducks/expense';
 
 function AddTransaction() {
-    const {addTransaction} = useContext(GlobalContext)
+    const dispatch = useDispatch()
+
     const [text, setText] = useState("");
     const [amount, setAmount] = useState(0)
 
 
     const onSubmit = e =>{
         e.preventDefault();
+       
 
 
         const newTransaction = {
@@ -17,10 +21,9 @@ function AddTransaction() {
             amount:+amount,
 
         }
+        dispatch(addTransaction(newTransaction))
         
-        function money (){
-            addTransaction(newTransaction)
-        }
+        
         
         
         
@@ -34,7 +37,7 @@ function AddTransaction() {
             
             <div className="form-control">
                 <label htmlFor="text">Text</label>
-                <input data-testid ='transaction-text' type="text" placeholder='Enter text...' value={text} onChange={(e)=> setText(e.target.value)} />
+                <input type="text" placeholder='Enter text...' value={text} onChange={(e)=> setText(e.target.value)} />
             </div>
 
             <div className="form-control">

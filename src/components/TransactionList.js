@@ -1,10 +1,11 @@
-import React,{useContext} from 'react'
-import { GlobalContext } from '../context/GlobalState'
+import React from 'react'
+
 import Transaction from './Transaction'
+import { useSelector } from 'react-redux'
 
 function TransactionList() {
 
-    const {transactions} = useContext(GlobalContext)
+    const transactions = useSelector((state) => state.expense.transactions)
     
     return (
         <div>

@@ -3,9 +3,13 @@ import ReactDOM from 'react-dom';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 
+
 ReactDOM.render(
   <React.StrictMode>
+    
     <App />
+  
+    
   </React.StrictMode>,
   document.getElementById('root')
 );
@@ -15,6 +19,3 @@ ReactDOM.render(
 // or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
 reportWebVitals();
 // Add this in your component file
-require('react-dom');
-window.React2 = require('react');
-console.log(window.React1 === window.React2);

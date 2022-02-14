@@ -1,30 +1,57 @@
 import {render, screen, cleanup, fireEvent} from '@testing-library/react'
 import IncomeExpense from '../IncomeExpense';
+import { Provider } from 'react-redux';
+import { createStore } from 'redux';
+import  { addTransaction, initialState} from '../../redux/ducks/expense'
+import expenseReducer from '../../redux/ducks/expense'
 
+import * as redux from 'react-redux'
+
+
+
+
+
+
+function renderWithRedux (
+    ui, 
+    {initialState, store = createStore(expenseReducer, initialState)} = {}
+){
+    return {
+        ...render(<Provider store = {store}>{ui}</Provider>), store
+    }
+}
 
 
 describe('initial render to check if addtransaction button is disabled', () => { 
-test('to check if incomeexpense is defined', () => {
+//   const useSelectorMock =  jest.spyOn(redux, 'useSelector')
+//   const useDispatchMock = jest.spyOn(redux, 'useDispatch')
+
+//   beforeEach(() => {
+//     useSelectorMock.mockClear()
+//     useDispatchMock.mockClear()
+// })
+
+    
+test('to check if income expense is defined', () => {
+//     const transactions = jest.fn()
+//     useSelectorMock.mockReturnValue(transactions)
+    
+    
+    
+
+//     //renderWithRedux(<IncomeExpense/>)
+//     const {getByTestId} = renderWithRedux(<IncomeExpense/>)
+        
+//    // const balanceElement = screen.getByTestId('income');
+//     expect(getByTestId('income')).toBeInTheDocument();
+
+
      
-    render(<IncomeExpense/>)
-    const {transactions} =  {
-        transactions:[
-            {id:1, text: 'flower', amount: -2 },
-            {id:2, text: 'salary', amount:300},
-            {id:3, text:'Book', amount:-10},
-            {id:4, text:'Camera', amount:150}
-        ]
-    }
    
-    expect(IncomeExpense()).toBeDefined();
    
-    expect(transactions.map(transaction => transaction.text)).toEqual([
-        'flower',
-        'salary',
-        'Book',
-        'Camera',
-    ]);
-  
+    
+   
+   
   
 });
 

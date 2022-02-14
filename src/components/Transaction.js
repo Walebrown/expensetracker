@@ -1,20 +1,27 @@
-import React, {useContext} from 'react'
-import { GlobalContext } from '../context/GlobalState'
+import React from 'react'
 
-
+import { useDispatch } from 'react-redux';
+import { deleteTransaction } from '../redux/ducks/expense';
 
 
 
 function Transaction( {transaction}) {
+    const dispatch = useDispatch()
+
     
-    const {deleteTransaction} = useContext(GlobalContext)
+
+        const handleDelete = () =>{
+
+            dispatch(deleteTransaction(transaction.id))
+        }
+    
    
     const sign = transaction.amount < 0 ? '-':"+";
     return (
         <div>
-            <li className= {transaction.amount <0 ? 'minus' : 'plus'}>
+            <li className= {transaction.amount <0 ? 'minus' : 'plus'} key= {transaction.id}>
                      {transaction.text} <span>{sign}${Math.abs( transaction.amount)}</span> 
-                     <button data-testId= 'buttton' onClick={() => deleteTransaction(transaction.id)} className='delete-btn'> x</button>
+                    <button  onClick={handleDelete} className='delete-btn'> x</button>
                  </li>
         </div>
     )
